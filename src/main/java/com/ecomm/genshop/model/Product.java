@@ -19,8 +19,8 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "serial")
-    private int productId;
-    private String productName, productDescription, category;
+    private int productId, categoryId;
+    private String productName, productDescription;
     private BigDecimal price, wholesalePrice, offerPrice;
     private int stock;
 

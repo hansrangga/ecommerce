@@ -11,17 +11,25 @@ import com.ecomm.genshop.model.Cart;
 @Repository
 public interface CartDao extends JpaRepository<Cart, Integer> {
 
-    // Mencari berdasarkan userId
-    Cart findByUserId(int userId);
+    // Mencari Cart berdasarkan userId
+    Optional<Cart> findByUserId(int userId);
 
-    // Mencari berdasarkan productId
-    List<Cart> findByProductId(int productId);
+    // Menghitung jumlah Cart berdasarkan userId
+    long countByUserId(int userId);
 
-    // Mencari berdasarkan couponId
+    // Mencari Cart berdasarkan paymentId
+    List<Cart> findByPaymentId(int paymentId);
+
+    // Mencari semua Cart yang belum memiliki paymentId
+    List<Cart> findByPaymentIdIsNull();
+
+    // Mencari Cart berdasarkan couponId
     List<Cart> findByCouponId(int couponId);
 
-    // Mencari item keranjang berdasarkan userId dan productId (untuk mengecek
-    // apakah produk tertentu sudah ada di keranjang pengguna atau belum)
-    Optional<Cart> findByUserIdAndProductId(int userId, int productId);
+    // Mencari semua Cart yang telah menggunakan kupon
+    List<Cart> findByCouponIdIsNotNull();
+
+    // Menghapus Cart berdasarkan userId
+    void deleteByUserId(int userId);
 
 }

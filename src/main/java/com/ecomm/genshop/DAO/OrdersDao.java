@@ -2,7 +2,6 @@ package com.ecomm.genshop.DAO;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -12,23 +11,37 @@ import com.ecomm.genshop.model.Orders;
 @Repository
 public interface OrdersDao extends JpaRepository<Orders, Integer> {
 
-    // Mencari berdasarkan userId
+    // Mencari semua Orders berdasarkan userId
     List<Orders> findByUserId(int userId);
 
-    // Mencari berdasarkan status
+    // Mencari Orders berdasarkan status
     List<Orders> findByStatus(String status);
 
-    // Mencari berdasarkan productId
-    List<Orders> findByProductId(int productId);
+    // Mencari Orders berdasarkan addressId
+    List<Orders> findByAddressId(int addressId);
 
-    // Mencari pesanan berdasarkan userId dan productId (untuk mengecek apakah
-    // pengguna telah memesan produk tertentu sebelumnya)
-    Optional<Orders> findByUserIdAndProductId(int userId, int productId);
+    // Mencari Orders berdasarkan paymentId
+    List<Orders> findByPaymentId(int paymentId);
 
-    // Mencari pesanan berdasarkan userId dan status
-    List<Orders> findByUserIdAndStatus(int userId, String status);
+    // Menghitung total pemasanan berdasarkan userId
+    int countByUserId(int userId);
 
-    // Mencari pesanan berdasarkan rentang harga total
+    // Menghitung total nilai pemesanan berdasarkan userId
+    BigDecimal sumTotalByUserId(int userId);
+
+    // Memeriksa apakah ada Orders dengan status tertentu untuk userId tertentu
+    boolean existsByUserIdAndStatus(int userId, String status);
+
+    // Menghapus semua Orders berdasarkan userId
+    void deleteByUserId(int userId);
+
+    // Mengambil daftar pesanan berdasarkan rentang total harga
     List<Orders> findByTotalBetween(BigDecimal minTotal, BigDecimal maxTotal);
+
+    // Mengambil daftar pesanan yang belum dibayar (misalnya status 'UNPAID')
+    List<Orders> findByStatusOrderByOrderIdDesc(String status);
+
+    // Mengambil daftar pesanan berdasarkan urutan dari yang terbaru
+    List<Orders> findByOrderByOrderIdDesc();
 
 }

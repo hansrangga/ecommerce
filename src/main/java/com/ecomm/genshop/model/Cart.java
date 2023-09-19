@@ -18,6 +18,6 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "serial")
     private int cartId;
-    private int userId, paymentId, couponId, productId, quantity;
+    private int userId, paymentId, couponId;
 
 }

@@ -14,14 +14,13 @@ import lombok.Data;
 @Entity
 @Data
 @Table(schema = "ecomm")
-public class Orders {
+public class OrdersItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "serial")
-    private int orderId;
-    private int userId, addressId, paymentId;
-    private BigDecimal total;
-    private String status;
+    private int orderItemId;
+    private int orderId, productId, quantity;
+    private BigDecimal price;
 
 }
