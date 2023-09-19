@@ -12,7 +12,7 @@ import com.ecomm.genshop.model.Cart;
 public interface CartDao extends JpaRepository<Cart, Integer> {
 
     // Mencari berdasarkan userId
-    List<Cart> findByUserId(int userId);
+    Cart findByUserId(int userId);
 
     // Mencari berdasarkan productId
     List<Cart> findByProductId(int productId);

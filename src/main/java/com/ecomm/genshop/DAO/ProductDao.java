@@ -11,6 +11,8 @@ import com.ecomm.genshop.model.Product;
 @Repository
 public interface ProductDao extends JpaRepository<Product, Integer> {
 
+    Product findByProductName(String productName);
+
     // Mencari berdasarkan productName
     List<Product> findByProductNameContainingIgnoreCase(String productName);
 
