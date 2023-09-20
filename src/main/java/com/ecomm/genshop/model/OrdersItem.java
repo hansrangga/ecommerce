@@ -21,6 +21,6 @@ public class OrdersItem {
     @Column(columnDefinition = "serial")
     private int orderItemId;
     private int orderId, productId, quantity;
-    private BigDecimal price;
+    private BigDecimal price, subTotal;
 
 }

@@ -1,6 +1,7 @@
 package com.ecomm.genshop.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,5 +24,6 @@ public class Orders {
     private int userId, addressId, paymentId;
     private BigDecimal total;
     private String status;
+    private Date orderDate;
 
 }

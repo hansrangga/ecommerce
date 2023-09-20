@@ -1,9 +1,11 @@
 package com.ecomm.genshop.DAO;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.ecomm.genshop.model.Orders;
@@ -43,5 +45,10 @@ public interface OrdersDao extends JpaRepository<Orders, Integer> {
 
     // Mengambil daftar pesanan berdasarkan urutan dari yang terbaru
     List<Orders> findByOrderByOrderIdDesc();
+
+    @Query(value = "SELECT o.* FROM orders o WHERE o.status = :status", nativeQuery = true)
+    List<Orders> getAllOrders(String status);
+
+    List<Orders> findByCreatedDateBetween(Date startDate, Date endDate);
 
 }

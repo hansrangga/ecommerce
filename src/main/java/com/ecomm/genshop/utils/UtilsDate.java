@@ -11,6 +11,11 @@ public class UtilsDate {
 
     private static final Logger LOGGER = Logger.getLogger(UtilsDate.class.getName());
 
+    public static String YYYY_MM_DD = "yyyy-MM-dd";
+    public static String DD_MM_YYYY = "dd-MM-yyyy";
+    public static String DD_MMM_YYYY = "dd-MMM-yyyy";
+    public static String YYYYMMDD = "yyyyMMdd";
+
     public static String toString(Date date, String format) {
         if (date == null) {
             return "";

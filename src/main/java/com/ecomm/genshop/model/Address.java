@@ -19,7 +19,7 @@ public class Address {
     @Column(columnDefinition = "serial")
     private int addressId;
     private int userId;
-    private String streetName, districtName, cityName, provinceName;
+    private String streetName, districtName, cityName, provinceName, countryName;
     private int postalCode;
     private boolean isDeleted;
 
