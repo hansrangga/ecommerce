@@ -12,6 +12,8 @@ import com.ecomm.genshop.model.Category;
 @Repository
 public interface CategoryDao extends JpaRepository<Category, Integer> {
 
+    Category getByCategoryName(String categoryName);
+
     // Mencari Category berdasarkan categoryName
     Optional<Category> findByCategoryName(String categoryName);
 
